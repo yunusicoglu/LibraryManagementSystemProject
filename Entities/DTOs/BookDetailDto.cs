@@ -12,5 +12,6 @@ namespace Entities.DTOs
         public int BookId { get; set; }
         public string BookName { get; set; }
         public string CategoryName { get; set; }
+        public string AuthorName { get; set; }
     }
 }

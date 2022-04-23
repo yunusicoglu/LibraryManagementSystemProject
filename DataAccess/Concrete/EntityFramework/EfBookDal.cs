@@ -19,7 +19,14 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from b in context.Books
                              join c in context.Categories
                              on b.CategoryId equals c.CategoryId
-                             select new BookDetailDto { BookId = b.BookId, BookName = b.BookName, CategoryName = c.CategoryName };
+                             join a in context.Authors
+                             on b.AuthorId equals a.AuthorId
+                             select new BookDetailDto 
+                             {   BookId = b.BookId, 
+                                 BookName = b.BookName, 
+                                 CategoryName = c.CategoryName,
+                                 AuthorName = a.AuthorName
+                             };
                 return result.ToList();
             }
         }
